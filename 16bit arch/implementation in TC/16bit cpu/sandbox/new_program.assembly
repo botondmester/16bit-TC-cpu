@@ -1,0 +1,12 @@
+nop
+ima 27
+sta RAM+27
+ima 69
+lda RAM+27
+imb 27
+cmp
+joc FEQ ramtest
+hlt
+label ramtest
+nop
+jmp ramtest

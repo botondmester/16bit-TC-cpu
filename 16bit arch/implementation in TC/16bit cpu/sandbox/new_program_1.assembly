@@ -1,0 +1,49 @@
+const screen 0xC000
+label main
+	nop
+	movSp 0x8000 + 32
+	movRd 44
+	std RAM+2
+	jmp print
+	label loop2
+	jmp loop2
+label print
+	# Rd: start of the null-terminated string
+	movRa screen-1
+	sta RAM+1
+	label loop
+		lda RAM+1
+		ldb RAM+2
+		addi 1
+		iadd 1
+		ldc_Rb
+		stc_Ra
+		sta RAM+1
+		stb RAM+2
+		movRc_Ra
+		cmpi 0
+		joc FEQ done
+		jmp loop
+	label done
+	hlt
+	jmp loop2
+hlt
+label what
+nop
+jmp what
+label message
+0   # add1 error correction
+72  #H
+101 #e
+108 #l
+108 #l
+111 #o
+44  #,
+32  # 
+87  #W
+111 #o
+114 #r
+108 #l
+100 #d
+33  #!
+0   #\0

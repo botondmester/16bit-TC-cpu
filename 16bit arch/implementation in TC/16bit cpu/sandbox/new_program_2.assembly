@@ -1,0 +1,15 @@
+const screen 0xC000
+nop
+movRa 72
+sta screen
+movRa 101
+sta screen+1
+movRa 108
+sta screen+2
+movRa 108
+sta screen+3
+movRa 111
+sta screen+4
+nop
+nop
+hlt
